@@ -1,12 +1,30 @@
 <div id="<%= dom_id tweet %>">
-  <p>
-    <strong>Usename:</strong>
-    <%= tweet.usename %>
-  </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= tweet.description %>
-  </p>
 
+
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col-auto">
+        <!-- Imagen del perfil -->
+        <% parsed_tweet = eval(tweet.usename) %>
+        <%= image_tag parsed_tweet[:profile_image_url_https], class: "rounded-circle"%>
+      </div>
+      <div class="col">
+        <!-- Información del tweet -->
+        <strong><%= parsed_tweet[:name] %></strong> 
+        <span>
+          <!-- LLama a helpers tweets_helper.rb-->
+          <%=formatted_created_at(parsed_tweet[:created_at])%>
+        </span>
+        <p class="mb-1"><%= tweet.description %></p>
+        <!-- Botones de interacción -->
+        <div class="d-flex justify-content-start">
+          <i class="fa-regular fa-comment mx-3"></i>
+          <i class="fa-regular fa-heart mx-3"></i>
+          <i class="fa-regular fa-envelope mx-3"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
