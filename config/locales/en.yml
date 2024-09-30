@@ -28,4 +28,6 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  tweets:
+    hello: "Hello world"
+    query_text: "what do you want to search for ?"

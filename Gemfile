@@ -59,3 +59,4 @@ end
 
 gem 'faker'
 gem 'annotate'
+gem "pg_search", "~> 2.3"

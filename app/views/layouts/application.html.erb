@@ -25,9 +25,10 @@
       <div class="row justify-content-center">
           <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-              <% link_to 'Tweet', root_path, class:"navbar-brand" %>
-              <a class="navbar-brand" href="#">Navbar</a>
-
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <%= link_to 'Tweeter', root_path, class:"navbar-brand", "arial-current" => "page"  %>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li>
@@ -43,14 +44,22 @@
                   
                 </ul>
               </div>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-              </form>
+              <%= form_with url: tweets_path, method: :get, local: true, html: { id: 'search-form', 'data-controller': 'prevent-submit' } do |form| %>
+                <div class="input-group">
+                  <%= form.text_field :query_text, 
+                                      placeholder: t('.query_text'), 
+                                      value: params[:query_text], 
+                                      class: "form-control me-2", 
+                                      'data-prevent-submit-target': 'input' %>
+                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </div>
+              <% end %>
             </div>
           </nav>
       </div>
+      <div class="container mx-auto my-16 lg:px-10 px-4">
         <%= yield %>
+      </div>  
   
     </div>
 

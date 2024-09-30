@@ -33,6 +33,12 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+ test "search a tweet by query_text" do
+    get tweet_path(query_text: 'Vance')
+  end
+
+
+
   test "should update tweet" do
     patch tweet_url(@tweet), params: { tweet: { description: @tweet.description, usename: @tweet.usename } }
     assert_redirected_to tweet_url(@tweet)

@@ -10,8 +10,6 @@ require 'json'
     created_at.strftime("%A, %d") # de %B
   end
 
-  def random_background_color
-    Colorize.random_hex
-  end
+  
 
 end
