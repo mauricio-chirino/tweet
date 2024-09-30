@@ -7,7 +7,11 @@ require 'json'
 
   def formatted_created_at(tweet)
     created_at = Time.parse(tweet)
-    created_at.strftime("%A, %d de %B")
+    created_at.strftime("%A, %d") # de %B
+  end
+
+  def random_background_color
+    Colorize.random_hex
   end
 
 end

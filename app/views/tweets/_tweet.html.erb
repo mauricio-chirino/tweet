@@ -19,7 +19,7 @@
         <p class="mb-1"><%= tweet.description %></p>
         <!-- Botones de interacción -->
         <div class="d-flex justify-content-start">
-          <i class="fa-regular fa-comment mx-3"></i>
+          <%= link_to raw("<i class='fa-regular fa-comment mx-3'></i>"), tweet%>
           <i class="fa-regular fa-heart mx-3"></i>
           <i class="fa-regular fa-envelope mx-3"></i>
         </div>

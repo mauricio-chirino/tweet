@@ -8,9 +8,17 @@
   <% @tweets.each do |tweet| %>
     <%= render tweet %>
 
-    <%= link_to raw("<i class='fa-regular fa-comment'></i>"), tweet%>
+    <%
+=begin%>
+ <%= link_to raw("<i class='fa-regular fa-comment'></i>"), tweet%> 
+<%
+=end%>
 
   <% end %>
 </div>
 
-<%= link_to "New tweet", new_tweet_path %>
+<%
+=begin%>
+ <%= link_to "New tweet", new_tweet_path %> 
+<%
+=end%>
