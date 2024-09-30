@@ -5,17 +5,30 @@
   <div class="container">
     <div class="row mb-3">
       <div class="col-auto">
-        <!-- Imagen del perfil -->
-        <% parsed_tweet = eval(tweet.usename) %>
-        <%= image_tag parsed_tweet[:profile_image_url_https], class: "rounded-circle"%>
+        <!-- Imagen del perfil -->  
+        <% if tweet.usename.present? %> 
+          <% parsed_tweet = eval(tweet.usename) %>
+          <% if parsed_tweet[:profile_image_url_https].present? %>
+            <%= image_tag parsed_tweet[:profile_image_url_https], class: "rounded-circle"%>
+          <% else %>
+            <!-- Imagen de placeholder en caso de que la URL no esté presente -->
+            <%= image_tag 'default_profile_image.jpg', class: "rounded-circle" %>
+          <% end %> 
+        <% else %>
+          <%= image_tag 'https://www.imagensempng.com.br/wp-content/uploads/2021/08/Simbolo-de-aviso-Png.png', class: "rounded-circle" %>
+        <% end %>  
       </div>
       <div class="col">
         <!-- Información del tweet -->
-        <strong><%= parsed_tweet[:name] %></strong> 
-        <span>
-          <!-- LLama a helpers tweets_helper.rb-->
-          <%=formatted_created_at(parsed_tweet[:created_at])%>
-        </span>
+        <% if parsed_tweet.present? %> <!-- Verifica si parsed_tweet existe -->
+          <strong><%= parsed_tweet[:name] %></strong> 
+          <span>
+            <!-- LLama a helpers tweets_helper.rb-->
+            <%=formatted_created_at(parsed_tweet[:created_at])%>
+          </span>
+        <% else %>
+          <strong>Usuario desconocido</strong>
+        <% end %>  
         <p class="mb-1"><%= tweet.description %></p>
         <!-- Botones de interacción -->
         <div class="d-flex justify-content-start">
