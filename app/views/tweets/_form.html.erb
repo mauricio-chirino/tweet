@@ -2,7 +2,6 @@
   <% if tweet.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
-
       <ul>
         <% tweet.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,16 +11,25 @@
   <% end %>
 
   <div>
-    <%= form.label :usename, style: "display: block" %>
+    <%= form.label :Usuario, style: "display: block" %>
       <!-- Controla si estamos en edit o new para mostrar solo el nombre en edit -->
       <% if controller_name == 'tweets' && action_name == 'edit' %>
         <% parsed_tweet = eval(tweet.usename) %>
         <strong> <%= parsed_tweet[:name] %></strong>
+      <% else %>
+        <% if controller_name == 'tweets' && action_name == 'new' %>
+          
+          <% #parsed_tweet = eval(tweet.usename) %>
+          <strong> <%= tweet.usename %></strong>
+
+
+
+
+         dfghdfhdf
+         <% end %>
+
       <% end %>
-
-
   </div>
-
   <div>
     <%= form.label :Tweets, style: "display: block" %>
     <%= form.text_field :description %>

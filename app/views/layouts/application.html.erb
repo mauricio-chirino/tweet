@@ -30,28 +30,18 @@
               </button>
               <%= link_to 'Tweeter', root_path, class:"navbar-brand", "arial-current" => "page"  %>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li>
-                  <%= link_to "Nuevo Tweets", new_tweet_path, class: "nav-link" %>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                  </li>     
-                </ul>
               </div>
-              <%= form_with url: tweets_path, method: :get, local: true, html: { id: 'search-form', 'data-controller': 'prevent-submit' } do |form| %>
-                <div class="input-group">
-                  <%= form.text_field :query_text, 
-                                      placeholder: t('.query_text'), 
-                                      value: params[:query_text], 
-                                      class: "form-control me-2", 
-                                      'data-prevent-submit-target': 'input' %>
-                  <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </div>
-              <% end %>
+                <%= form_with url: tweets_path, method: :get, local: true, html: { id: 'search-form', 'data-controller': 'prevent-submit' } do |form| %>
+                  <div class="input-group">
+                    <%= form.text_field :query_text, 
+                                        placeholder: t('layouts.application.query_text'), 
+                                        value: params[:query_text], 
+                                        class: "form-control me-2", 
+                                        'data-prevent-submit-target': 'input' %>
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                  </div>
+                <% end %>
+
             </div>
           </nav>
       </div>

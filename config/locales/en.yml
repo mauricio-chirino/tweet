@@ -27,7 +27,8 @@
 #       "yes": yup
 #       enabled: "ON"
 
+# config/locales/en.yml
 en:
-  tweets:
-    hello: "Hello world"
-    query_text: "what do you want to search for ?"
+  layouts:
+    application:
+      query_text: "Search for something..."

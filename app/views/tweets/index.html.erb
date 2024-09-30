@@ -5,20 +5,32 @@
 <h1>Tweets</h1>
 
 <div id="tweets">
-  <% @tweets.each do |tweet| %>
+  <!-- para mostrar un mensaje cuando no se encuntra coinsidencia en la busqueda -->
+  <% unless @tweets.present?%>
+    <strong>No Encontrado</strong>
+    <%= link_to "regresar ", root_path %>
+  <% else %>  
+    <!-- Listado de tweets -->
+    <% @tweets.each do |tweet| %>
     <%= render tweet %>
+  <% end %> 
+
+      <!-- Paginación -->
+    <div class="pagination">
+      <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
+
+
+
+
 
     <%
 =begin%>
- <%= link_to raw("<i class='fa-regular fa-comment'></i>"), tweet%> 
+ <%= #link_to raw("<i class='fa-regular fa-comment'></i>"), tweet%> 
 <%
 =end%>
 
   <% end %>
 </div>
 
-<%
-=begin%>
- <%= link_to "New tweet", new_tweet_path %> 
-<%
-=end%>
+

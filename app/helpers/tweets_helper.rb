@@ -10,6 +10,5 @@ require 'json'
     created_at.strftime("%A, %d") # de %B
   end
 
-  
 
 end

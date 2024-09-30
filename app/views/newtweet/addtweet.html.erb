@@ -1,0 +1,56 @@
+<%=params[:id] %>
+
+<!-- Mostrar los datos de un solo tweet -->
+<% if @tweet.present? %>
+  <div>
+    <% parsed_tweet = eval(@tweet.usename) %>
+    <strong> <%= parsed_tweet[:name] %></strong>
+
+
+    <p>ID del tweet: <%= @tweet.id %></p>
+    <p>Descripción: <%= @tweet.description %></p>
+    <p>Usuario: <%= @tweet.usename %></p>
+
+  </div>
+<% else %>
+  <p>No se encontró el tweet.</p>
+<% end %>
+
+
+
+<% @user_data = eval(@tweet.usename)%>
+
+<%= form_with(model: @tweet, local: true) do |form| %>
+  <% if @tweet.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@tweet.errors.count, "error") %> impidieron guardar el tweet:</h2>
+      <ul>
+        <% @tweet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Mostramos el nombre del usuario, no editable -->
+  <div class="mb-3">
+    <%= form.label :name, "Nombre de Usuario", class: "form-label" %>
+    <%= text_field_tag :name, @user_data[:name], readonly: true, class: "form-control" %>
+  </div>
+
+  <!-- Mostramos el screen_name, no editable -->
+  <div class="mb-3">
+    <%= form.label :screen_name, "Nic Name", class: "form-label" %>
+    <%= text_field_tag :screen_name, @user_data[:screen_name], readonly: true, class: "form-control" %>
+  </div>
+
+  <!-- Campo para la descripción, editable -->
+  <div class="mb-3">
+    <%= form.label :description, "Nuevo Tweet", class: "form-label" %>
+    <%= form.text_area :description, value: "", class: "form-control", placeholder: "Escribe la descripción del tweet", autofocus: true  %>
+  </div>
+
+  <div>
+    <%= form.submit "Crear Tweet", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  resources :newtweet do
+    member do
+      get :addtweet
+    end
+  end
+
+
+
   resources :tweets
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

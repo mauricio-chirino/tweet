@@ -1,12 +1,23 @@
 <% content_for :title, "Editing tweet" %>
 
-<h1>Editing tweet</h1>
+<h1>Editar tweet</h1>
 
 <%= render "form", tweet: @tweet %>
 
 <br>
 
 <div>
+<%= link_to "Ver Tweet", @tweet, class: "btn btn-outline-primary btn-sm"%>
+
+<%= link_to "Cancelar", tweets_path, class: "btn btn-outline-primary btn-sm" %>
+
+
+
+<%
+=begin%>
+ 
   <%= link_to "Show this tweet", @tweet %> |
-  <%= link_to "Back to tweets", tweets_path %>
+  <%= link_to "Back to tweets", tweets_path %> 
+<%
+=end%>
 </div>

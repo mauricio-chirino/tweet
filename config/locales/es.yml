@@ -1,4 +1,4 @@
-es:
-tweets:
-  query_text: "Que buscar ?"
-  
+en:
+  layouts:
+    application:
+      query_text: "Buscar un Tweets..."

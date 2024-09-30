@@ -1,9 +1,12 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[ show edit update destroy ]
+  before_action :set_tweet, only: %i[ show edit update destroy]
 
   # GET /tweets or /tweets.json
   def index
-    @tweets = Tweet.all
+    #@tweets = Tweet.all
+    # agrega paginacion 
+    @tweets = Tweet.paginate(page: params[:page], per_page: 10) 
+    # para validar que query tenga un contenido
     if params[:query_text].present?
       @tweets = @tweets.search_full_text(params[:query_text])
     end
@@ -16,6 +19,7 @@ class TweetsController < ApplicationController
   # GET /tweets/new
   def new
     @tweet = Tweet.new
+    #@tweet = Tweet.find(params[:id]) #cambiando
   end
 
   # GET /tweets/1/edit
