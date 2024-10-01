@@ -60,5 +60,5 @@ end
 gem 'faker'
 gem 'annotate'
 gem "pg_search", "~> 2.3"
-gem 'will_paginate', '~> 3.3'
+gem 'will_paginate', '~> 4.0'
 gem 'will_paginate-bootstrap-style'
