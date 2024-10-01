@@ -57,10 +57,12 @@ class TweetsController < ApplicationController
 
   # DELETE /tweets/1 or /tweets/1.json
   def destroy
+    @tweet = Tweet.find(params[:id])
     @tweet.destroy!
-
+    flash[:notice] = "Tweet was successfully destroyed."
     respond_to do |format|
-      format.html { redirect_to tweets_path, status: :see_other, notice: "Tweet was successfully destroyed." }
+      format.html { redirect_to tweets_path, status: :see_other}
+      
       format.json { head :no_content }
     end
   end

@@ -1,13 +1,16 @@
-// app/javascript/controllers/focus_controller.js
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus"
 
+// Define el Stimulus Controller
 export default class extends Controller {
-  connect() {
-    // Seleccionamos el campo de texto que queremos enfocar
-    const descriptionField = this.element.querySelector('textarea[name="tweet[description]"]');
+  static targets = ["input"]
 
-    if (descriptionField) {
-      descriptionField.focus();  // Ponemos el foco en el campo de descripción
-    }
+  // Método que se ejecuta al inicializar el controller
+  connect() {
+    // Escuchar el evento 'keydown' en el input field
+    this.inputTarget.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault() // Evita el envío del formulario al presionar Enter
+      }
+    })
   }
 }

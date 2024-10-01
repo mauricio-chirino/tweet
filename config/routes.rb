@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     end
   end
 
+# resources :tweets do
+#   member do
+#     delete :destroy
+#   end
+# end
+
 resources :tweets do
   member do
     delete :destroy
