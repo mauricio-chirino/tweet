@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     end
   end
 
-
+resources :tweets do
+  member do
+    delete :destroy
+  end
+end
 
   resources :tweets
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

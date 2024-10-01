@@ -1,6 +1,12 @@
-<%=params[:id] %>
+<%
+=begin%>
+ <%=params[:id] %> 
+<%
+=end%>
 
-<!-- Mostrar los datos de un solo tweet -->
+<%
+=begin%>
+ <!-- Mostrar los datos de un solo tweet -->
 <% if @tweet.present? %>
   <div>
     <% parsed_tweet = eval(@tweet.usename) %>
@@ -14,7 +20,9 @@
   </div>
 <% else %>
   <p>No se encontró el tweet.</p>
-<% end %>
+<% end %> 
+<%
+=end%>
 
 
 
