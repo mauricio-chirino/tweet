@@ -2,7 +2,6 @@ databases:
   - name: mysite
     databaseName: mysite
     user: mysite
-        branch: main
     plan: free
 
 services:
@@ -10,6 +9,7 @@ services:
     name: mysite
     runtime: ruby
     plan: free
+    branch: main
     buildCommand: "./bin/render-build.sh"
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec rails server"
